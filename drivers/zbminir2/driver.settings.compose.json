@@ -1,0 +1,187 @@
+[
+    {
+        "id": "wallPenetration",
+        "type": "checkbox",
+        "label": {
+            "en": "Turbo Mode"
+        },
+        "hint": {
+            "en": "Enhancing the signal strength."
+        }
+    },
+    {
+        "id": "sledOnline",
+        "type": "checkbox",
+        "label": {
+            "en": "Network Indicator"
+        }
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Switch Mode"
+        },
+        "children": [
+            {
+                "id": "swMode",
+                "type": "dropdown",
+                "label": {
+                    "en": "Switch Mode"
+                },
+                "values": [
+                    {
+                        "id": "3",
+                        "label": {
+                            "en": "Pulse Mode"
+                        }
+                    },
+                    {
+                        "id": "2",
+                        "label": {
+                            "en": "Edge Mode"
+                        }
+                    },
+                    {
+                        "id": "1",
+                        "label": {
+                            "en": "Following Mode"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "swCtrlReverse",
+                "type": "checkbox",
+                "label": {
+                    "en": "Following Mode - Reverse"
+                }
+            },
+            {
+                "id": "relaySeparation",
+                "type": "checkbox",
+                "label": {
+                    "en": "Detach Relay"
+                },
+                "hint": {
+                    "en": "When enabled, the state of external switches and relays are separated."
+                }
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Power-on State"
+        },
+        "children": [
+            {
+                "id": "startup",
+                "type": "dropdown",
+                "label": {
+                    "en": "State"
+                },
+                "hint": {
+                    "en": "The state of the device when the power restores from a power outage or being turned off physically."
+                },
+                "values": [
+                    {
+                        "id": "on",
+                        "label": {
+                            "en": "On"
+                        }
+                    },
+                    {
+                        "id": "off",
+                        "label": {
+                            "en": "Off"
+                        }
+                    },
+                    {
+                        "id": "stay",
+                        "label": {
+                            "en": "Last state"
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "enableDelay",
+                "type": "checkbox",
+                "label": {
+                    "en": "Delay"
+                },
+                "hint": {
+                    "en": "Power-on state will be delayed for the time you set."
+                }
+            },
+            {
+                "id": "widthDelay",
+                "type": "number",
+                "label": {
+                    "en": "Duration"
+                },
+                "hint": {
+                    "en": "Set the time to delay the power-on state."
+                },
+                "min": 0.5,
+                "max": 3600,
+                "units": {
+                    "en": "seconds"
+                }
+            }
+        ]
+    },
+    {
+        "type": "group",
+        "label": {
+            "en": "Inching Settings"
+        },
+        "children": [
+            {
+                "id": "pulse",
+                "type": "checkbox",
+                "label": {
+                    "en": "Inching Settings"
+                }
+            },
+            {
+                "id": "widthInching",
+                "type": "number",
+                "label": {
+                    "en": "Inching"
+                },
+                "min": 0.5,
+                "max": 3600,
+                "units": {
+                    "en": "seconds"
+                }
+            },
+            {
+                "id": "switchInching",
+                "type": "dropdown",
+                "label": {
+                    "en": "Status"
+                },
+                "values": [
+                    {
+                        "id": "on",
+                        "label": {
+                            "en": "Auto-on"
+                        }
+                    },
+                    {
+                        "id": "off",
+                        "label": {
+                            "en": "Auto-off"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$extends": [
+            "settings"
+        ]
+    }
+]

@@ -1,0 +1,8 @@
+{
+  "repair": [
+    {
+      "id": "ewelink_repair_view",
+      "$template": "ewelink_repair"
+    }
+  ]
+}

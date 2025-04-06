@@ -1,0 +1,997 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.dimapp.ewelinkforhomey",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "eWeLink for Homey"
+  },
+  "description": {
+    "en": "eWeLink support for Homey Pro"
+  },
+  "category": [
+    "lights"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Simone Di Maio",
+    "email": "simone.dimaio77@gmail.com"
+  },
+  "brandColor": "#007dc7",
+  "drivers": [
+    {
+      "pair": [
+        {
+          "id": "opening_loading",
+          "template": "loading"
+        },
+        {
+          "id": "ewelink_login_view"
+        },
+        {
+          "id": "switch_list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "switch_add_devices"
+          }
+        },
+        {
+          "id": "switch_add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "ewelink_repair_view"
+        }
+      ],
+      "name": {
+        "en": "MINIR4 (Sonoff)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/minir4/assets/images/small.png",
+        "large": "/drivers/minir4/assets/images/large.png",
+        "xlarge": "/drivers/minir4/assets/images/xlarge.png"
+      },
+      "id": "minir4",
+      "settings": [
+        {
+          "id": "sledOnline",
+          "type": "checkbox",
+          "label": {
+            "en": "Network Indicator"
+          }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Switch Mode"
+          },
+          "children": [
+            {
+              "id": "swMode",
+              "type": "dropdown",
+              "label": {
+                "en": "Switch Mode"
+              },
+              "values": [
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Pulse Mode"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Edge Mode"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Following Mode"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "swCtrlReverse",
+              "type": "checkbox",
+              "label": {
+                "en": "Following Mode - Reverse"
+              }
+            },
+            {
+              "id": "relaySeparation",
+              "type": "checkbox",
+              "label": {
+                "en": "Detach Relay"
+              },
+              "hint": {
+                "en": "When enabled, the state of external switches and relays are separated."
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Power-on State"
+          },
+          "children": [
+            {
+              "id": "startup",
+              "type": "dropdown",
+              "label": {
+                "en": "State"
+              },
+              "hint": {
+                "en": "The state of the device when the power restores from a power outage or being turned off physically."
+              },
+              "values": [
+                {
+                  "id": "on",
+                  "label": {
+                    "en": "On"
+                  }
+                },
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Off"
+                  }
+                },
+                {
+                  "id": "stay",
+                  "label": {
+                    "en": "Last state"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "enableDelay",
+              "type": "checkbox",
+              "label": {
+                "en": "Delay"
+              },
+              "hint": {
+                "en": "Power-on state will be delayed for the time you set."
+              }
+            },
+            {
+              "id": "widthDelay",
+              "type": "number",
+              "label": {
+                "en": "Duration"
+              },
+              "hint": {
+                "en": "Set the time to delay the power-on state."
+              },
+              "min": 0.5,
+              "max": 3600,
+              "units": {
+                "en": "seconds"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Inching Settings"
+          },
+          "children": [
+            {
+              "id": "pulse",
+              "type": "checkbox",
+              "label": {
+                "en": "Inching Settings"
+              }
+            },
+            {
+              "id": "widthInching",
+              "type": "number",
+              "label": {
+                "en": "Inching"
+              },
+              "min": 0.5,
+              "max": 3600,
+              "units": {
+                "en": "seconds"
+              }
+            },
+            {
+              "id": "switchInching",
+              "type": "dropdown",
+              "label": {
+                "en": "Status"
+              },
+              "values": [
+                {
+                  "id": "on",
+                  "label": {
+                    "en": "Auto-on"
+                  }
+                },
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Auto-off"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Info"
+          },
+          "children": [
+            {
+              "id": "ssid",
+              "type": "label",
+              "label": {
+                "en": "SSID"
+              },
+              "hint": {
+                "en": "Name of the network the device is connected to."
+              }
+            },
+            {
+              "id": "brandName",
+              "type": "label",
+              "label": {
+                "en": "Brand Name"
+              },
+              "hint": {
+                "en": "Brand of the device."
+              }
+            },
+            {
+              "id": "productModel",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "hint": {
+                "en": "Code that identifies the device model."
+              }
+            },
+            {
+              "id": "idDevice",
+              "type": "label",
+              "label": {
+                "en": "ID Device"
+              },
+              "hint": {
+                "en": "Unique identifier of the device."
+              }
+            },
+            {
+              "id": "fwVersion",
+              "type": "label",
+              "label": {
+                "en": "FW Version"
+              },
+              "hint": {
+                "en": "Version of the firmware."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair": [
+        {
+          "id": "opening_loading",
+          "template": "loading"
+        },
+        {
+          "id": "ewelink_login_view"
+        },
+        {
+          "id": "switch_list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "switch_add_devices"
+          }
+        },
+        {
+          "id": "switch_add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "ewelink_repair_view"
+        }
+      ],
+      "name": {
+        "en": "SNZB-01P (Sonoff)"
+      },
+      "class": "button",
+      "capabilities": [
+        "measure_battery"
+      ],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/snzb01p/assets/images/small.png",
+        "large": "/drivers/snzb01p/assets/images/large.png",
+        "xlarge": "/drivers/snzb01p/assets/images/xlarge.png"
+      },
+      "energy": {
+        "batteries": [
+          "CR2477"
+        ]
+      },
+      "id": "snzb01p",
+      "settings": [
+        {
+          "id": "settings",
+          "type": "group",
+          "label": {
+            "en": "Device Info"
+          },
+          "children": [
+            {
+              "id": "subDevRssi",
+              "type": "label",
+              "label": {
+                "en": "RSSI"
+              },
+              "hint": {
+                "en": "Signal strength of the device."
+              }
+            },
+            {
+              "id": "brandName",
+              "type": "label",
+              "label": {
+                "en": "Brand Name"
+              },
+              "hint": {
+                "en": "Brand of the device."
+              }
+            },
+            {
+              "id": "productModel",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "hint": {
+                "en": "Code that identifies the device model."
+              }
+            },
+            {
+              "id": "idDevice",
+              "type": "label",
+              "label": {
+                "en": "ID Device"
+              },
+              "hint": {
+                "en": "Unique identifier of the device."
+              }
+            },
+            {
+              "id": "fwVersion",
+              "type": "label",
+              "label": {
+                "en": "FW Version"
+              },
+              "hint": {
+                "en": "Version of the firmware."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair": [
+        {
+          "id": "opening_loading",
+          "template": "loading"
+        },
+        {
+          "id": "ewelink_login_view"
+        },
+        {
+          "id": "switch_list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "switch_add_devices"
+          }
+        },
+        {
+          "id": "switch_add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "ewelink_repair_view"
+        }
+      ],
+      "name": {
+        "en": "ZBMINI (Sonoff)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/zbmini/assets/images/small.png",
+        "large": "/drivers/zbmini/assets/images/large.png",
+        "xlarge": "/drivers/zbmini/assets/images/xlarge.png"
+      },
+      "id": "zbmini",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Info"
+          },
+          "children": [
+            {
+              "id": "subDevRssi",
+              "type": "label",
+              "label": {
+                "en": "RSSI"
+              },
+              "hint": {
+                "en": "Signal strength of the device."
+              }
+            },
+            {
+              "id": "brandName",
+              "type": "label",
+              "label": {
+                "en": "Brand Name"
+              },
+              "hint": {
+                "en": "Brand of the device."
+              }
+            },
+            {
+              "id": "productModel",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "hint": {
+                "en": "Code that identifies the device model."
+              }
+            },
+            {
+              "id": "idDevice",
+              "type": "label",
+              "label": {
+                "en": "ID Device"
+              },
+              "hint": {
+                "en": "Unique identifier of the device."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair": [
+        {
+          "id": "opening_loading",
+          "template": "loading"
+        },
+        {
+          "id": "ewelink_login_view"
+        },
+        {
+          "id": "switch_list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "switch_add_devices"
+          }
+        },
+        {
+          "id": "switch_add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "ewelink_repair_view"
+        }
+      ],
+      "name": {
+        "en": "ZBMINI-L2 (Sonoff)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/zbminil2/assets/images/small.png",
+        "large": "/drivers/zbminil2/assets/images/large.png",
+        "xlarge": "/drivers/zbminil2/assets/images/xlarge.png"
+      },
+      "id": "zbminil2",
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Settings"
+          },
+          "children": [
+            {
+              "id": "startup",
+              "type": "dropdown",
+              "label": {
+                "en": "Startup state"
+              },
+              "hint": {
+                "en": "Set the state of the device in case of power interruption."
+              },
+              "values": [
+                {
+                  "id": "on",
+                  "label": {
+                    "en": "On"
+                  }
+                },
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Off"
+                  }
+                },
+                {
+                  "id": "stay",
+                  "label": {
+                    "en": "Last state"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "settings",
+          "type": "group",
+          "label": {
+            "en": "Device Info"
+          },
+          "children": [
+            {
+              "id": "subDevRssi",
+              "type": "label",
+              "label": {
+                "en": "RSSI"
+              },
+              "hint": {
+                "en": "Signal strength of the device."
+              }
+            },
+            {
+              "id": "brandName",
+              "type": "label",
+              "label": {
+                "en": "Brand Name"
+              },
+              "hint": {
+                "en": "Brand of the device."
+              }
+            },
+            {
+              "id": "productModel",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "hint": {
+                "en": "Code that identifies the device model."
+              }
+            },
+            {
+              "id": "idDevice",
+              "type": "label",
+              "label": {
+                "en": "ID Device"
+              },
+              "hint": {
+                "en": "Unique identifier of the device."
+              }
+            },
+            {
+              "id": "fwVersion",
+              "type": "label",
+              "label": {
+                "en": "FW Version"
+              },
+              "hint": {
+                "en": "Version of the firmware."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pair": [
+        {
+          "id": "opening_loading",
+          "template": "loading"
+        },
+        {
+          "id": "ewelink_login_view"
+        },
+        {
+          "id": "switch_list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "switch_add_devices"
+          }
+        },
+        {
+          "id": "switch_add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "ewelink_repair_view"
+        }
+      ],
+      "name": {
+        "en": "ZBMINI-R2 (Sonoff)"
+      },
+      "class": "light",
+      "capabilities": [
+        "onoff"
+      ],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/zbminir2/assets/images/small.png",
+        "large": "/drivers/zbminir2/assets/images/large.png",
+        "xlarge": "/drivers/zbminir2/assets/images/xlarge.png"
+      },
+      "id": "zbminir2",
+      "settings": [
+        {
+          "id": "wallPenetration",
+          "type": "checkbox",
+          "label": {
+            "en": "Turbo Mode"
+          },
+          "hint": {
+            "en": "Enhancing the signal strength."
+          }
+        },
+        {
+          "id": "sledOnline",
+          "type": "checkbox",
+          "label": {
+            "en": "Network Indicator"
+          }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Switch Mode"
+          },
+          "children": [
+            {
+              "id": "swMode",
+              "type": "dropdown",
+              "label": {
+                "en": "Switch Mode"
+              },
+              "values": [
+                {
+                  "id": "3",
+                  "label": {
+                    "en": "Pulse Mode"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Edge Mode"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Following Mode"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "swCtrlReverse",
+              "type": "checkbox",
+              "label": {
+                "en": "Following Mode - Reverse"
+              }
+            },
+            {
+              "id": "relaySeparation",
+              "type": "checkbox",
+              "label": {
+                "en": "Detach Relay"
+              },
+              "hint": {
+                "en": "When enabled, the state of external switches and relays are separated."
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Power-on State"
+          },
+          "children": [
+            {
+              "id": "startup",
+              "type": "dropdown",
+              "label": {
+                "en": "State"
+              },
+              "hint": {
+                "en": "The state of the device when the power restores from a power outage or being turned off physically."
+              },
+              "values": [
+                {
+                  "id": "on",
+                  "label": {
+                    "en": "On"
+                  }
+                },
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Off"
+                  }
+                },
+                {
+                  "id": "stay",
+                  "label": {
+                    "en": "Last state"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "enableDelay",
+              "type": "checkbox",
+              "label": {
+                "en": "Delay"
+              },
+              "hint": {
+                "en": "Power-on state will be delayed for the time you set."
+              }
+            },
+            {
+              "id": "widthDelay",
+              "type": "number",
+              "label": {
+                "en": "Duration"
+              },
+              "hint": {
+                "en": "Set the time to delay the power-on state."
+              },
+              "min": 0.5,
+              "max": 3600,
+              "units": {
+                "en": "seconds"
+              }
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Inching Settings"
+          },
+          "children": [
+            {
+              "id": "pulse",
+              "type": "checkbox",
+              "label": {
+                "en": "Inching Settings"
+              }
+            },
+            {
+              "id": "widthInching",
+              "type": "number",
+              "label": {
+                "en": "Inching"
+              },
+              "min": 0.5,
+              "max": 3600,
+              "units": {
+                "en": "seconds"
+              }
+            },
+            {
+              "id": "switchInching",
+              "type": "dropdown",
+              "label": {
+                "en": "Status"
+              },
+              "values": [
+                {
+                  "id": "on",
+                  "label": {
+                    "en": "Auto-on"
+                  }
+                },
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Auto-off"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "settings",
+          "type": "group",
+          "label": {
+            "en": "Device Info"
+          },
+          "children": [
+            {
+              "id": "subDevRssi",
+              "type": "label",
+              "label": {
+                "en": "RSSI"
+              },
+              "hint": {
+                "en": "Signal strength of the device."
+              }
+            },
+            {
+              "id": "brandName",
+              "type": "label",
+              "label": {
+                "en": "Brand Name"
+              },
+              "hint": {
+                "en": "Brand of the device."
+              }
+            },
+            {
+              "id": "productModel",
+              "type": "label",
+              "label": {
+                "en": "Model"
+              },
+              "hint": {
+                "en": "Code that identifies the device model."
+              }
+            },
+            {
+              "id": "idDevice",
+              "type": "label",
+              "label": {
+                "en": "ID Device"
+              },
+              "hint": {
+                "en": "Unique identifier of the device."
+              }
+            },
+            {
+              "id": "fwVersion",
+              "type": "label",
+              "label": {
+                "en": "FW Version"
+              },
+              "hint": {
+                "en": "Version of the firmware."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "flow": {
+    "triggers": [
+      {
+        "id": "single-press",
+        "title": {
+          "en": "Single press"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=snzb01p"
+          }
+        ]
+      },
+      {
+        "id": "double-press",
+        "title": {
+          "en": "Double press"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=snzb01p"
+          }
+        ]
+      },
+      {
+        "id": "long-press",
+        "title": {
+          "en": "Long press"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=snzb01p"
+          }
+        ]
+      }
+    ]
+  }
+}

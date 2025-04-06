@@ -1,0 +1,243 @@
+<style>
+    /* Stile per il contenitore principale */
+    .main-container {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        right: 10px;
+        bottom: 5px;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    header,
+    legend {
+        text-align: center;
+    }
+
+    .homey-button-primary-full {
+        margin-top: 10px;
+        align-self: center;
+        margin-bottom: 10px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+        margin-bottom: 10px;
+    }
+
+    header {
+        margin-top: 5px;
+    }
+
+    .homey-subtitle {
+        margin-top: 20px;
+    }
+
+    /* Stile per il messaggio di errore */
+    #errorMessage {
+        color: red;
+    }
+</style>
+<main class="main-container">
+    <header>
+        <h1 class="homey-title" data-i18n="pair.welcome.title"></h1>
+        <p class="homey-subtitle" data-i18n="pair.welcome.text"></p>
+    </header>
+
+    <form class="homey-form">
+        <!-- ... -->
+        <fieldset class="homey-form-fieldset">
+
+            <div class="homey-form-group">
+                <label class="homey-form-label" for="appIdInput" data-i18n="pair.textbox.appId"></label>
+                <input type="text" id="appIdInput" class="homey-form-input" data-i18n-placeholder="pair.placeholder.appId" />
+            </div>
+
+            <div class="homey-form-group">
+                <label class="homey-form-label" for="appSecretInput" data-i18n="pair.textbox.appSecret"></label>
+                <input type="text" id="appSecretInput" class="homey-form-input" data-i18n-placeholder="pair.placeholder.appSecret" />
+            </div>
+
+            <div class="homey-form-group">
+                <label class="homey-form-label" for="serverPortInput" data-i18n="pair.textbox.serverPort"></label>
+                <input type="text" id="serverPortInput" class="homey-form-input" data-i18n-placeholder="pair.placeholder.serverPort" />
+            </div>
+
+            <div class="homey-form-group">
+                <label class="homey-form-label" for="serverUrlInput" data-i18n="pair.textbox.redirectUrl"></label>
+                <div style="display: flex; align-items: center;">
+                    <input type="text" id="serverUrlInput" class="homey-form-input" data-i18n-placeholder="pair.placeholder.redirectUrl" readonly />
+                    <img src="../../../assets/images/pair/copy-icon.png" alt="Copy" style="cursor: pointer; margin-left: 15px; width: 20px; height: 23px;" onclick="copyToClipboard()" />
+                </div>
+            </div>
+
+            <!-- Messaggio di errore -->
+            <label id="errorMessage" class="homey-form-label error-message"></label>
+
+        </fieldset>
+    </form>
+    <div class="button-container">
+        <button id="loginButton" onclick="eWeLinkLogIn()" class="homey-button-primary-full"
+            data-i18n="pair.button"></button>
+    </div>
+</main>
+
+<script type="application/javascript">
+
+    let currentIpAddress = '';
+
+    Homey.on("noLogin", function (err) {
+        const errorMessage = document.getElementById('errorMessage');
+        switch (err) {
+            case 408:
+                errorMessage.textContent = Homey.__("pair.error.408"); // 'Errore generico.';
+                break;
+            case 500:
+                errorMessage.textContent = Homey.__("pair.error.general"); // 'Errore di rete.';
+                break;
+            default:
+                errorMessage.textContent = Homey.__("pair.error.unknown"); // 'Errore sconosciuto.';
+                break;
+        }
+        errorMessage.style.visibility = 'visible';
+
+        document.querySelectorAll('.input-field').forEach(input => {
+            input.setAttribute('readonly', true);
+        });
+
+        const button = document.getElementById('loginButton');
+        button.className = 'homey-button-primary-full';
+        button.textContent = 'Chiudi';
+        button.setAttribute('onclick', 'closeView()');
+    });
+
+    Homey.on("ipAddress", function (ipAddress) {
+        currentIpAddress = ipAddress;
+        updateServerUrl();
+    });
+
+    document.getElementById('serverPortInput').addEventListener('input', function () {
+        const serverPortInput = document.getElementById('serverPortInput');
+        let serverPort = serverPortInput.value.trim();
+
+        // Rimuovi tutti i caratteri non numerici
+        serverPort = serverPort.replace(/\D/g, '');
+
+        // Converti in numero e verifica il range
+        const portNumber = parseInt(serverPort, 10);
+        if (portNumber < 0 || portNumber > 65535) {
+            serverPortInput.value = '';
+        } else {
+            serverPortInput.value = serverPort;
+        }
+
+        updateServerUrl();
+    });
+
+    function copyToClipboard() {
+        const serverUrlInput = document.getElementById('serverUrlInput');
+        serverUrlInput.select();
+        serverUrlInput.setSelectionRange(0, 99999); // For mobile devices
+
+        try {
+            document.execCommand('copy');
+            Homey.alert(Homey.__("pair.copy.success")); // Message indicating success
+        } catch (err) {
+            Homey.alert(Homey.__("pair.copy.error")); // Message indicating failure
+        }
+    }
+
+    function closeView() {
+        Homey.done();
+    }
+
+    function updateServerUrl() {
+        const serverPort = document.getElementById('serverPortInput').value.trim();
+        const serverUrlInput = document.getElementById('serverUrlInput');
+        if (currentIpAddress && serverPort) {
+            serverUrlInput.value = `http://${currentIpAddress}:${serverPort}/redirectUrl`;
+        } else {
+            serverUrlInput.value = '';
+        }
+    }
+
+    function eWeLinkLogIn() {
+        const appIdInput = document.getElementById('appIdInput').value.trim();
+        const appSecretInput = document.getElementById('appSecretInput').value.trim();
+        const serverPortInput = document.getElementById('serverPortInput').value.trim();
+
+        const appIdLabel = document.querySelector('label[for="appIdInput"]');
+        const appSecretLabel = document.querySelector('label[for="appSecretInput"]');
+        const serverPortLabel = document.querySelector('label[for="serverPortInput"]');
+
+        let hasError = false;
+
+        if (appIdInput === '') {
+            if (!appIdLabel.querySelector('span')) {
+                const errorSpan = document.createElement('span');
+                errorSpan.style.color = 'red';
+                errorSpan.textContent = ' *';
+                appIdLabel.appendChild(errorSpan);
+            }
+            hasError = true;
+        } else {
+            const errorSpan = appIdLabel.querySelector('span');
+            if (errorSpan) {
+                appIdLabel.removeChild(errorSpan);
+            }
+        }
+
+        if (appSecretInput === '') {
+            if (!appSecretLabel.querySelector('span')) {
+                const errorSpan = document.createElement('span');
+                errorSpan.style.color = 'red';
+                errorSpan.textContent = ' *';
+                appSecretLabel.appendChild(errorSpan);
+            }
+            hasError = true;
+        } else {
+            const errorSpan = appSecretLabel.querySelector('span');
+            if (errorSpan) {
+                appSecretLabel.removeChild(errorSpan);
+            }
+        }
+
+        if (serverPortInput === '') {
+            if (!serverPortLabel.querySelector('span')) {
+                const errorSpan = document.createElement('span');
+                errorSpan.style.color = 'red';
+                errorSpan.textContent = ' *';
+                serverPortLabel.appendChild(errorSpan);
+            }
+            hasError = true;
+        } else {
+            const errorSpan = serverPortLabel.querySelector('span');
+            if (errorSpan) {
+                serverPortLabel.removeChild(errorSpan);
+            }
+        }
+
+        if (!hasError) {
+            const loginButton = document.getElementById('loginButton');
+            loginButton.classList.add('is-loading');
+
+            Homey.emit(
+                'eWeLinkLogIn',
+                {
+                    "appId": appIdInput,
+                    "appSecret": appSecretInput,
+                    "serverPort": serverPortInput
+                }
+            ).then(function (result) {
+                if (result) {
+                    Homey.popup(result);
+                }
+            });
+        }
+    }
+
+</script>

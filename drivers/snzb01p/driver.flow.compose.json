@@ -1,0 +1,22 @@
+{
+  "triggers": [
+    {
+      "id": "single-press",
+      "title": {
+        "en": "Single press"
+      }
+    },
+    {
+      "id": "double-press",
+      "title": {
+        "en": "Double press"
+      }
+    },
+    {
+      "id": "long-press",
+      "title": {
+        "en": "Long press"
+      }
+    }
+  ]
+}

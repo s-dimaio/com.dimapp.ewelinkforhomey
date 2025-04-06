@@ -1,0 +1,37 @@
+{
+    "pair": {
+        "welcome": {
+            "title": "Set up your eWeLink account",
+            "text": "Visit https://dev.ewelink.cc/ and log in/register to the eWelink developer account."
+        },
+        "textbox": {
+        "appId": "App ID",
+        "appSecret": "App Secret",
+        "serverPort": "Server Port",
+        "redirectUrl": "Redirect URL"
+        },
+        "placeholder": {
+            "appId": "Enter App ID",
+            "appSecret": "Enter App Secret",
+            "serverPort": "Enter Server Port",
+            "redirectUrl": "Redirect URL"
+        },
+        "copy": {
+            "success": "Redirect URL copied successfully",
+            "error": "Failed to copy Redirect URL"
+        },
+        "button": "Continue",
+        "error": {
+            "textEmpty": "Error: the field cannot be empty",
+            "408": "Error: AppId expired. Please contact eWelink support to renew it. After that, log in again.",
+            "general": "Error: there is a problem authenticating your account. Please try again later.",
+            "unknown": "Error: there is a problem with your eWelink developer account. Please contact eWelink support."
+        }
+    },
+    "error": {
+        "401": "Cannot found access token info. Try to repair the device.",
+        "408": "AppId expipred. Please contact ewelink support.",
+        "general": "General error. Try to repair the device to solve.",
+        "offline": "The device seems offline. Please check the power."
+    }
+}

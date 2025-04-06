@@ -1,0 +1,30 @@
+{
+  "name": {
+    "en": "SNZB-01P (Sonoff)"
+  },
+  "class": "button",
+  "capabilities": [
+    "measure_battery"
+  ],
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "energy": {
+    "batteries": [
+      "CR2477"
+    ]
+  },
+  "$extends": [
+    "pair",
+    "repair"
+  ]
+}

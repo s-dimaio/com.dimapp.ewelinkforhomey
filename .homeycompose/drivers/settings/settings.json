@@ -1,0 +1,58 @@
+{
+    "type": "group",
+    "label": {
+        "en": "Device Info"
+    },
+    "children": [
+        {
+            "id": "subDevRssi",
+            "type": "label",
+            "label": {
+                "en": "RSSI"
+            },
+            "hint": {
+                "en": "Signal strength of the device."
+            }
+        },
+        {
+            "id": "brandName",
+            "type": "label",
+            "label": {
+                "en": "Brand Name"
+            },
+            "hint": {
+                "en": "Brand of the device."
+            }
+        },
+        {
+            "id": "productModel",
+            "type": "label",
+            "label": {
+                "en": "Model"
+            },
+            "hint": {
+                "en": "Code that identifies the device model."
+            }
+        },
+        {
+            "id": "idDevice",
+            "type": "label",
+            "label": {
+                "en": "ID Device"
+            },
+            "hint": {
+                "en": "Unique identifier of the device."
+            }
+        },
+        {
+            "id": "fwVersion",
+            "type": "label",
+            "label": {
+                "en": "FW Version"
+            },
+            "hint": {
+                "en": "Version of the firmware."
+            }
+        }
+    ]
+}

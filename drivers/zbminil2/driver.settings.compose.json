@@ -1,0 +1,45 @@
+[
+    {
+        "type": "group",
+        "label": {
+            "en": "Settings"
+        },
+        "children": [
+            {
+                "id": "startup",
+                "type": "dropdown",
+                "label": {
+                    "en": "Startup state"
+                },
+                "hint": {
+                    "en": "Set the state of the device in case of power interruption."
+                },
+                "values": [
+                    {
+                        "id": "on",
+                        "label": {
+                            "en": "On"
+                        }
+                    },
+                    {
+                        "id": "off",
+                        "label": {
+                            "en": "Off"
+                        }
+                    },
+                    {
+                        "id": "stay",
+                        "label": {
+                            "en": "Last state"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "$extends": [
+            "settings"
+        ]
+    }
+]

@@ -1,0 +1,23 @@
+{
+  "pair": [
+    {
+      "id": "opening_loading",
+      "template": "loading"
+    },
+    {
+      "id": "ewelink_login_view",
+      "$template": "ewelink_login"
+    },
+    {
+      "id": "switch_list_devices",
+      "template": "list_devices",
+      "navigation": {
+        "next": "switch_add_devices"
+      }
+    },
+    {
+      "id": "switch_add_devices",
+      "template": "add_devices"
+    }
+  ]
+}

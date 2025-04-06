@@ -1,0 +1,17 @@
+{
+  "name": "com.dimapp.ewelinkforhomey",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {},
+  "devDependencies": {
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^0.3.10"
+  },
+  "dependencies": {
+    "ewelink-api-next": "^1.0.4",
+    "fs-extra": "^11.3.0",
+    "koa": "^2.15.4",
+    "koa-bodyparser": "^4.4.1",
+    "koa-router": "^13.0.1",
+    "open": "^10.1.0"
+  }
+}

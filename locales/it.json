@@ -1,0 +1,37 @@
+{
+  "pair": {
+    "welcome": {
+      "title": "Configura il tuo account eWeLink",
+      "text": "Visita https://dev.ewelink.cc/ ed effettua l'accesso/registrati all'account eWelink per sviluppatori."
+    },
+    "textbox": {
+      "appId": "App ID",
+      "appSecret": "App Secret",
+      "serverPort": "Server Port",
+      "redirectUrl": "Redirect URL"
+    },
+    "placeholder": {
+      "appId": "Inserisci App ID",
+      "appSecret": "Inserisci App Secret",
+      "serverPort": "Inserisci Server Port",
+      "redirectUrl": "Redirect URL"
+    },
+    "copy": {
+      "success": "Redirect URL copiato con successo",
+      "error": "Copia di Redirect URL fallita"
+    },
+    "button": "Continua",
+    "error": {
+      "textEmpty": "Errore: il campo non può essere vuoto",
+      "408  ": "Errore: AppId scaduto. Contattare il supporto eWelink per chiederne il rinnovo. Dopo esegui nuovamente l'accesso.",
+      "general": "Errore: c'è un problema in fase di autentiazione del tuo account. Riprova più tardi.",
+      "unknown": "Errore: c'è un problema con il tuo account sviluppatore di eWelink. Contatta il supporto eWelink."
+    }
+  },
+  "error": {
+    "401": "Impossibile trovare le informazioni sul token di accesso. Prova a riparare il dispositivo.",
+    "408": "AppId scaduto. Contattare il supporto ewelink.",
+    "general": "Errore generale. Prova a riparare il dispositivo per risolvere.",
+    "offline": "Il dispositivo sembra offline. Controlla l'alimentazione."
+  }
+}
